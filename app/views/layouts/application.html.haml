@@ -7,4 +7,8 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = yield
+    .app-container
+      %header
+        %nav
+          = link_to 'Rails Weekly', root_path, class: 'header-brand'
+      = yield
