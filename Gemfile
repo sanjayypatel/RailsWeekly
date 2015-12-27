@@ -52,3 +52,6 @@ end
 gem 'bootstrap-sass'
 
 gem 'pry-rails', :group => :development
+
+gem 'haml'
+gem 'haml-rails'
