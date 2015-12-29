@@ -55,3 +55,9 @@ gem 'pry-rails', :group => :development
 
 gem 'haml'
 gem 'haml-rails'
+
+gem 'figaro'
+
+gem "omniauth-github", '1.1.2'
+
+gem "octokit", "~> 4.0"

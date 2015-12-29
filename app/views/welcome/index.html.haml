@@ -5,3 +5,11 @@
   .page-text Challenge yourself to a code a Ruby on Rails mini-app each week.  Follow along with the Rails Weekly challenges or substitute your own idea.
   .page-section-title About
   .page-text Hi, I'm Sanjay Patel and I maintain the Rails Weekly site. Rails Weekly was started as a way to hone my Ruby on Rails development skills.  The focus of the challenge is to build small, feature-focused apps that center on simple user stories.
+.sidebar
+- if current_user
+  .page-text
+    Welcome 
+    = current_user.name
+  = link_to "Sign Out", signout_path
+- else
+  = link_to "Sign in with Github", "/auth/github"
