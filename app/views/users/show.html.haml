@@ -1,0 +1,15 @@
+.main-content
+  - if @user
+    .page-title= @user.name
+    .page-subtitle Repositories
+    - if @repositories
+      - @repositories.each do |repository|
+        %p= link_to repository.full_name, repository.html_url
+.sidebar
+- if current_user
+  .page-text
+    Welcome 
+    = current_user.name
+  = link_to "Sign Out", signout_path
+- else
+  = link_to "Sign in with Github", "/auth/github"
