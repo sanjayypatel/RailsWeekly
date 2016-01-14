@@ -1,0 +1,19 @@
+.main-content
+  .page-title= "#{@user.name}'s Work"
+  - if @portfolio.personal_url
+    .page-subtite= link_to 'Personal Site', @portfolio.personal_url, target: '_blank'
+  -if @repositories
+    .row
+      - @repositories.each do |repository|
+        .col-md-6.col-sm-12
+          .repo-in-list
+            .repo-title= link_to repository.name, repository.repo_url
+.sidebar
+  - if current_user
+    .page-text
+      Welcome 
+      = link_to current_user.name, user_path(current_user)
+    .page-text= link_to "Sign Out", signout_path
+    .page-text= link_to "Edit Portfolio", edit_user_portfolio_path(current_user, @portfolio)
+  - else
+    = link_to "Sign in with Github", "/auth/github"

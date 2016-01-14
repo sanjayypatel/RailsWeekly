@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229053228) do
+ActiveRecord::Schema.define(version: 20160105234501) do
+
+  create_table "portfolios", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "personal_url"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "portfolios", ["user_id"], name: "index_portfolios_on_user_id"
+
+  create_table "repositories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "portfolio_id"
+    t.string   "repo_url"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "repositories", ["portfolio_id"], name: "index_repositories_on_portfolio_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "provider"

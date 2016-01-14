@@ -23,6 +23,9 @@ Landing Page Styles
 .app-container {
   @extend .container;
 }
+.app-content {
+  @extend .row;
+}
 header {
   margin: 1em 0 2em 0;
   border-bottom: 1px lightgrey solid;
@@ -67,4 +70,16 @@ Standard View Styles
 .page-text {
   font-size: 1em;
   margin-bottom: 0.5em;
+}
+
+.repo-in-list {
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.25);
+  padding: 1em;
+  margin: 0.5em;
+  height: 350px;
+  text-align: center;
+  .repo-title{
+    margin-top: 0.5em;
+    font-size: 1.5em;
+  }
 }

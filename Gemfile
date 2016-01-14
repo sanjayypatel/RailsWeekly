@@ -61,3 +61,5 @@ gem 'figaro'
 gem "omniauth-github", '1.1.2'
 
 gem "octokit", "~> 4.0"
+
+gem 'pundit'
