@@ -1,33 +1,29 @@
 .main-content
   .page-title= 'Edit Portfolio'
+  .page-subtitle Included Repositories
+  -if @repositories
+    .row
+      - @repositories.each do |repository|
+        .col-md-6.col-sm-12
+          .repo-in-list
+            .repo-title= link_to repository.name, repository.repo_url
+  .page-subtitle Add Repositories from Github
+  -if @found_repositories
+    .row
+      - @found_repositories.each do |found_repository|
+        .col-md-6.col-sm-12
+          .repo-in-list
+            .repo-title= link_to found_repository.full_name, found_repository.html_url, target: '_blank'
+            = form_for [current_user, Repository.new] do |f|
+              =f.hidden_field :name, value: found_repository.full_name
+              =f.hidden_field :repo_url, value: found_repository.html_url
+              =f.hidden_field :portfolio_id, value: @portfolio.id
+              =f.submit 'Add to portfolio', class: 'repo-button'
+.sidebar
+  .profile-title= "#{@user.name}'s Work"
   = form_for [current_user, @portfolio] do |f|
     .form-group
       =f.label :personal_url, 'Personal Site', class: 'form-label'
       =f.url_field :personal_url, class: 'form-control'
     .form-group
       =f.submit 'Save', class: 'btn btn-success'
-  .page-subtitle Included Repositories
-  -if @repositories
-    .row
-      - @repositories.each do |repository|
-        .repo-in-list
-          = link_to repository.name, repository.repo_url
-  .page-subtitle Add Repositories from Github
-  -if @found_repositories
-    .row
-      - @found_repositories.each do |found_repository|
-        .repo-in-list
-          = link_to found_repository.full_name, found_repository.html_url, target: '_blank'
-          = form_for [current_user, Repository.new] do |f|
-            =f.hidden_field :name, value: found_repository.full_name
-            =f.hidden_field :repo_url, value: found_repository.html_url
-            =f.hidden_field :portfolio_id, value: @portfolio.id
-            =f.submit 'Add to portfolio', class: 'btn btn-success'
-.sidebar
-  - if current_user
-    .page-text
-      Welcome 
-      = link_to current_user.name, user_path(current_user)
-    = link_to "Sign Out", signout_path
-  - else
-    = link_to "Sign in with Github", "/auth/github"

@@ -11,5 +11,13 @@
       %header
         %nav
           = link_to 'Rails Weekly', root_path, class: 'header-brand'
+          .user-links
+            - if current_user
+              .page-text
+                Welcome 
+                = link_to current_user.name, user_path(current_user)
+              .page-text= link_to "Sign Out", signout_path
+            - else
+              = link_to "Sign in with Github", "/auth/github"
       .app-content
         = yield

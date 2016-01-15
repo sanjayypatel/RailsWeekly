@@ -2,11 +2,4 @@
   - if @user
     .page-title= @user.name
     .page-subtitle= link_to 'Portfolio', user_portfolio_path(@user, @user.portfolio)
-.sidebar
-  - if current_user
-    .page-text
-      Welcome 
-      = link_to current_user.name, user_path(current_user)
-    = link_to "Sign Out", signout_path
-  - else
-    = link_to "Sign in with Github", "/auth/github"
+    .page-subtitle= link_to "Edit Portfolio", edit_user_portfolio_path(current_user, @user.portfolio)
